@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on 
+
+# redirect no-www to www only main domain, not with subdomain
+RewriteCond %{HTTP_HOST} ^(domain\.com)$ [NC]
+RewriteRule ^ https://www.%1%{REQUEST_URI} [R=301,L]
+
+# redirect http to https all domain
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+</IfModule>

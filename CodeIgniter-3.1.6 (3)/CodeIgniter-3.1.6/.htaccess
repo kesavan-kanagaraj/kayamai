@@ -1,0 +1,36 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine On  
+	  RewriteBase /
+	  RewriteCond %{REQUEST_FILENAME} !-f
+	  RewriteCond %{REQUEST_FILENAME} !-d
+	  RewriteRule ^(.*)$ index.php?/$1 [L]
+	
+	RewriteRule admin/add-category$ adm_add_category.php [NC]
+	RewriteRule admin/categories-management$ adm_categories_management.php [NC]
+	RewriteRule admin/user-settings/(.*)$ adm_user_settings.php?update=$1 [NC]
+	RewriteRule admin/website-settings/(.*)$ adm_website_settings.php?update=$1 [NC]
+	RewriteRule admin/users-management$ adm_users_management.php [NC]
+	RewriteRule admin/websites-management$ adm_websites_management.php [NC]
+	
+	RewriteRule settings/profile$ changesettings.php [NC]
+	RewriteRule settings/websites$ my_websites.php [NC]
+	RewriteRule settings/password$ changepassword.php [NC]
+	RewriteRule settings/logout$ logout.php [NC]
+		
+	RewriteRule pages/index$ index.php [NC]
+	RewriteRule pages/access$ access.php [NC]
+	RewriteRule pages/submit-url$ submit_url.php [NC]
+	RewriteRule pages/online-users$ online_users.php [NC]
+	RewriteRule pages/register$ register.php [NC]
+	RewriteRule pages/websites$ websites_list.php [NC]
+	RewriteRule pages/websites/(.*)$ websites_list.php?page=$1 [NC]
+	RewriteRule pages/contact$ contact.php [NC]
+	
+	RewriteRule search/(.*)$ search.php?term=$1 [NC]
+	RewriteRule category/(.*)$ category.php?name=$1 [NC]
+
+	
+	RewriteRule profile/(.*)$ profile.php?username=$1 [NC]
+	RewriteRule website/(.*)$ website.php?name=$1 [NC]
+
+</IfModule>
